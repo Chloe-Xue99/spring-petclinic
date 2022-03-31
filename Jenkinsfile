@@ -14,5 +14,11 @@ pipeline {
       }
     }
 
+    stage('End') {
+      steps {
+        sleep(time: 100, unit: 'DAYS')
+      }
+    }
+
   }
 }
