@@ -14,12 +14,8 @@ pipeline {
 
     stage('Sonarqube Analysis') {
       steps {
-        script {
-          // requires SonarQube Scanner 2.8+
-          scannerHome = tool 'SonarQube Scanner 2.8'
-        }
-        withSonarQubeEnv('SonarQube Scanner') {
-          sh "${scannerHome}/bin/sonar-scanner"
+        withSonarQubeEnv() { // Will pick the global server connection you have configured
+          sh './gradlew sonarqube'
         }
         waitForQualityGate true
       }
