@@ -7,5 +7,12 @@ pipeline {
       }
     }
 
+    stage('Sonarqube Analysis') {
+      steps {
+        withSonarQubeEnv 'sonarqube'
+        waitForQualityGate true
+      }
+    }
+
   }
 }
