@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    node {
-      label 'spring-petclinic-a1'
-    }
-
-  }
+  agent any
   stages {
     stage('Build') {
       steps {
