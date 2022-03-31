@@ -14,9 +14,10 @@ pipeline {
 
     stage('Sonarqube Analysis') {
       steps {
-        withSonarQubeEnv(installationName: 'Sonarqube') {
+        withSonarQubeEnv('Sonarqube') {
           sh './gradlew sonarqube'
         }
+
         waitForQualityGate true
       }
     }
