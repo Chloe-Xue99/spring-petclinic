@@ -14,9 +14,9 @@ pipeline {
 
     stage('Sonarqube Analysis') {
       steps {
-        withSonarQubeEnv(installationName: 'sonarqube', envOnly: true)  { // Will pick the global server connection you have configured
-      sh './gradlew sonarqube'
-      }
+        withSonarQubeEnv() { 
+          sh './gradlew sonarqube'
+        }
         waitForQualityGate true
       }
     }
