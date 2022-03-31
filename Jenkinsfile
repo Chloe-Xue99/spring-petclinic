@@ -13,7 +13,6 @@ pipeline {
           sh './mvnw clean package sonar:sonar'
         }
 
-        waitForQualityGate true
       }
     }
 
