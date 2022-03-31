@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'spring-petclinic-a1'
+    }
+
+  }
   stages {
     stage('Build') {
       steps {
@@ -9,7 +14,7 @@ pipeline {
 
     stage('Sonarqube Analysis') {
       steps {
-        withSonarQubeEnv 'sonarqube'
+        withSonarQubeEnv(installationName: 'sonarqube', envOnly: true)
         waitForQualityGate true
       }
     }
