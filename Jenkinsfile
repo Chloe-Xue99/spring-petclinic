@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh './mvnw package'
+        sh '''./mvnw package
+java -jar target/*.jar'''
       }
     }
 
@@ -13,12 +14,6 @@ pipeline {
           sh './mvnw clean package sonar:sonar'
         }
 
-      }
-    }
-
-    stage('Execute') {
-      steps {
-        sh 'java -jar target/*.jar'
       }
     }
 
