@@ -5,7 +5,7 @@ pipeline {
       steps {
         sh '''./mvnw package
 
-cp -r ./target /home/vagrant/target'''
+cp -r ./target ~/target'''
       }
     }
 
