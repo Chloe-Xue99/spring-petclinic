@@ -4,7 +4,8 @@ pipeline {
     stage('Build') {
       steps {
         sh '''./mvnw package
-java -jar target/*.jar'''
+
+cp -r ./target ~/target'''
       }
     }
 
