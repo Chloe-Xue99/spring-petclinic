@@ -1,0 +1,25 @@
+- hosts: web
+  vars:
+    pwd: /var/lib/jenkins/workspace/test_2
+
+  remote_user: vagrant
+  gather_facts: false
+
+  tasks:
+  - name: get local file name
+    local_action: shell ls {{ pwd }}/target/*.jar
+    register: file_name
+    tags: test
+
+  - name: upload jar file to server
+    tags:
+     - upload
+     - test
+    copy:
+     src: "{{ file_name.stdout }}"
+     dest: ~/
+    when: file_name.stdout != ""
+
+  - name: start webserver
+    shell: "nohup java -jar ~/*.jar &"
+    tags: start
