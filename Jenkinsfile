@@ -4,7 +4,7 @@ pipeline {
         
         stage('build') {
             steps {
-                git branch: 'main', credentialsId: '48c2ce83-0fb4-4887-94fa-3b2732b72cce', url: 'https://github.com/SwaggieHu/spring-petclinic.git'
+                git branch: 'main', credentialsId: '2ab232c7-174d-4e6c-ad8f-d3c6186fbc79', url: 'https://github.com/Chloe-Xue99/spring-petclinic.git'
                 sh 'mvn package'
             }
         }
@@ -13,7 +13,8 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                ansiblePlaybook credentialsId: '6d71f0a0-eeaf-426c-81d7-6066314d70ae', disableHostKeyChecking: true, installation: 'ansible', inventory: '/var/lib/jenkins/workspace/test_2/hosts', playbook: '/var/lib/jenkins/workspace/test_2/playbook.yaml'
+                ansiblePlaybook credentialsId: '28d22200-c0e7-4389-a7f7-b61cd9c9d168', disableHostKeyChecking: true, installation: 'ansible', inventory: '/var/lib/jenkins/workspace/test_2/hosts', playbook: '/var/lib/jenkins/workspace/test_2/playbook.yaml'
             }
         }
     }
+}
